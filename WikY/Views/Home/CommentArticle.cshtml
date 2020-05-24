@@ -1,0 +1,24 @@
+﻿@using WikY.Models
+
+@model Comment
+
+@{
+    ViewBag.Title = "Commenter l'article";
+    Article myArticle = (Article)ViewBag.Article;
+}
+
+<h2>Votre commentaire de l'article "@myArticle.Theme" (posté par @myArticle.Author) </h2>
+
+@using (Html.BeginForm())
+{
+    @*@Html.HiddenFor(c => c.Id)
+        <div>@Html.LabelFor(c => c.Author) @Html.EditorFor(c => c.Author) </div>
+        <div>@Html.LabelFor(c => c.Content) @Html.EditorFor(c => c.Content) </div>
+        <div><button type="submit">Valider</button></div>*@
+
+    @Html.HiddenFor(c => c.ArticleId, new { Value = myArticle.Id })
+    <div>@Html.LabelFor(c => c.Author) @Html.EditorFor(c => c.Author) </div>
+    <div>@Html.LabelFor(c => c.Content) @Html.EditorFor(c => c.Content) </div>
+    <div><button type="submit">Valider</button></div>
+}
+

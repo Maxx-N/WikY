@@ -1,0 +1,19 @@
+﻿@using WikY.Models
+
+@model Article
+
+@{
+    ViewBag.Title = "Modifier un article";
+}
+
+<h2>Modification d'article</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(a => a.Id)
+    <div>@Html.LabelFor(a => a.Theme) @Html.EditorFor(a => a.Theme) </div>
+    <div>@Html.LabelFor(a => a.Author) @Html.EditorFor(a => a.Author) </div>
+    <div>@Html.LabelFor(a => a.Content) @Html.EditorFor(a => a.Content) </div>
+    <div><button type="submit">Valider</button></div>
+}
+
+
