@@ -28,14 +28,24 @@ namespace WikY.Controllers
             myContext.Articles.Add(myArticle);
             myContext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ReadArticle", new { myId = myArticle.Id }); ;
         }
 
         public ActionResult ReadArticle(int myId)
         {
             WikYContext myContext = new WikYContext();
             Article myArticle = myContext.Articles.FirstOrDefault(a => a.Id == myId);
-            return View(myArticle);
+            ViewBag.Article = myArticle;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ReadArticle(Comment myComment)
+        {
+            WikYContext myContext = new WikYContext();
+            myContext.Comments.Add(myComment);
+            myContext.SaveChanges();
+            return RedirectToAction("ReadArticle", new { myId = myComment.ArticleId });
         }
 
         public ActionResult UpdateArticle(int myId)
@@ -64,22 +74,6 @@ namespace WikY.Controllers
             myContext.Articles.Remove(myArticle);
             myContext.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        public ActionResult CommentArticle(int articleId)
-        {
-            WikYContext myContext = new WikYContext();
-            ViewBag.Article = myContext.Articles.FirstOrDefault(a => a.Id == articleId);
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CommentArticle(Comment myComment)
-        {
-            WikYContext myContext = new WikYContext();
-            myContext.Comments.Add(myComment);
-            myContext.SaveChanges();
-            return RedirectToAction("ReadArticle", new { myId = myComment.ArticleId });
         }
     }
 }

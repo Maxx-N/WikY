@@ -12,12 +12,12 @@ namespace WikY.Models
 
         public int ArticleId { get; set; }
 
-        [Display(Name = "Auteur du commentaire")]
+        [Display(Name = "Votre nom")]
         public string Author { get; set; }
 
         public DateTime CommentDate { get; set; } = DateTime.Now;
 
-        [Display(Name = "Tapez votre commentaire ici")]
+        [Display(Name = "Votre commentaire")]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
     }

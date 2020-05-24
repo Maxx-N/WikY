@@ -12,7 +12,7 @@
 }
 else
 {
-    <h2>Il n'y a pas d'article pour l'instant.</h2>
+    <h2 class="text-center">Il n'y a pas d'article pour l'instant.</h2>
 }
 
 @foreach (Article art in Model)
@@ -20,7 +20,9 @@ else
     <hr />
     <h3 class="text-center">@Html.ActionLink(art.Theme, "ReadArticle", "Home", new { myId = art.Id }, null)</h3>
     <p class="text-center">
-        <strong>Posté par</strong> @art.Author<br />
-        <strong>Le</strong> @art.CreationDate
+        <em>
+            Posté par @art.Author<br />
+            Le @art.CreationDate
+        </em>
     </p>
 }

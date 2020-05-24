@@ -183,7 +183,6 @@
     <Content Include="Views\Home\PostArticle.cshtml" />
     <Content Include="Views\Home\UpdateArticle.cshtml" />
     <Content Include="Views\Home\ReadArticle.cshtml" />
-    <Content Include="Views\Home\CommentArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

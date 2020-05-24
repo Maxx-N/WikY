@@ -1,46 +1,57 @@
 ﻿@using WikY.Models
 
-@model Article
+@model Comment
 
 @{
     ViewBag.Title = "Lire l'article";
+    Article myArticle = (Article)ViewBag.Article;
 }
 
-<h1 class="text-center jumbotron"><strong>@Model.Theme</strong></h1>
+<h1 class="text-center jumbotron"><strong>@myArticle.Theme</strong></h1>
 
 <br />
-<p class="text-justify"><strong> @Model.Content</strong></p>
+<p class="text-justify"><strong> @myArticle.Content</strong></p>
 <br />
 <p class="text-center">
-    <em>Posté par @Model.Author</em><br />
-    <em>Le @Model.CreationDate</em><br />
-    <em>(Article n° @Model.Id)</em>
+    <em>Posté par @myArticle.Author</em><br />
+    <em>Le @myArticle.CreationDate</em><br />
+    <em>(Article n° @myArticle.Id)</em>
 </p>
 
 <br />
 <div style="display:flex; justify-content:space-around" @*class="horizontal-flex"*@>
     <p>
-        @Html.ActionLink("Commenter", "CommentArticle", "Home", new { articleId = Model.Id }, null)
+        @Html.ActionLink("Modifier", "UpdateArticle", "Home", new { myId = myArticle.Id }, null)
     </p>
     <p>
-        @Html.ActionLink("Modifier", "UpdateArticle", "Home", new { myId = Model.Id }, null)
-    </p>
-    <p>
-        @Html.ActionLink("Supprimer", "DestroyArticle", "Home", new { myId = Model.Id }, null)
+        @Html.ActionLink("Supprimer", "DestroyArticle", "Home", new { myId = myArticle.Id }, null)
     </p>
 </div>
 
 <br />
-@if (Model.Comments.Count > 0)
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c => c.ArticleId, new { Value = myArticle.Id })
+    <table class="table">
+        <tbody>
+            <tr><td>@Html.LabelFor(c => c.Author)</td><td> @Html.EditorFor(c => c.Author)</td></tr>
+            <tr><td>@Html.LabelFor(c => c.Content)</td><td>@Html.EditorFor(c => c.Content)</td></tr>
+            <tr><td><button type="submit">Commenter</button></td><td></td></tr>
+        </tbody>
+    </table>
+}
+
+@if (myArticle.Comments.Count > 0)
 {
     <h2 class="text-center"><strong>Commentaires</strong></h2>
 
-    foreach (Comment c in Model.Comments)
+    foreach (Comment c in myArticle.Comments)
     {
         <hr />
         <h3><strong>@c.Author</strong></h3>
         <p>@c.Content</p>
-        <p>(posté le @c.CommentDate)</p>
+        <p><em>posté le @c.CommentDate</em></p>
     }
 }
 
