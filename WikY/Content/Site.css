@@ -21,6 +21,10 @@
     justify-content: space-around;
 }
 
+.red {
+    color: red;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

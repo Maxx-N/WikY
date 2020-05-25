@@ -1,0 +1,64 @@
+﻿@using WikY.Models
+
+@model Article
+
+@{
+    ViewBag.Title = "Lire l'article";
+}
+
+<h1 class="text-center jumbotron"><strong>@Model.Theme</strong></h1>
+
+<br />
+<p class="text-justify"><strong> @Model.Content</strong></p>
+<br />
+<p class="text-center">
+    <em>Posté par @Model.Author</em><br />
+    <em>Le @Model.CreationDate</em><br />
+    <em>(Article n° @Model.Id)</em>
+</p>
+
+<br />
+<div style="display:flex; justify-content:space-around" @*class="horizontal-flex"*@>
+    <p>
+        @Html.ActionLink("Modifier", "UpdateArticle", "Article", new { myId = Model.Id }, null)
+    </p>
+    <p>
+        @Html.ActionLink("Supprimer", "DestroyArticle", "Article", new { myId = Model.Id }, null)
+    </p>
+</div>
+
+<br />
+
+@using (Html.BeginForm("CreateComment", "Comment"))
+{
+    <input type="hidden" name="ArticleId" value="@Model.Id" />
+    <table class="table">
+        <tbody>
+            <tr><td><label for="Author">Votre nom</label></td><td> <input type="text" name="Author" /></td></tr>
+            <tr><td><label for="Content">Votre commentaire</label></td><td><textarea name="Content"></textarea></td></tr>
+            <tr><td><button type="submit">Commenter</button></td><td></td></tr>
+        </tbody>
+    </table>
+}
+
+@if (Model.Comments.Count > 0)
+{
+    <h2 class="text-center"><strong>Commentaires</strong></h2>
+
+    foreach (Comment c in Model.Comments.OrderByDescending(c => c.CommentDate))
+    {
+        <hr />
+        <h3><strong>@c.Author</strong></h3>
+        <p>@c.Content</p>
+        <p><em>posté le @c.CommentDate</em></p>
+        <div style="display:flex; justify-content:space-around" @*class="horizontal-flex"*@>
+            <p>
+                @Html.ActionLink("Modifier", "UpdateComment", "Comment", new { myId = c.Id }, null)
+            </p>
+            <p>
+                @Html.ActionLink("Supprimer", "DestroyComment", "Comment", new { myId = c.Id }, null)
+            </p>
+        </div>
+    }
+}
+

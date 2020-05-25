@@ -1,0 +1,22 @@
+﻿@using WikY.Models
+
+@model Comment
+
+@{
+    ViewBag.Title = "Modifier un commentaire";
+}
+
+<h2>Modification de commentaire</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c => c.Id) 
+    <table class="table">
+        <tbody>
+            <tr><td>@Html.LabelFor(c => c.Author)</td><td> @Html.EditorFor(c => c.Author)</td></tr>
+            <tr><td>@Html.LabelFor(c => c.Content)</td><td> @Html.EditorFor(c => c.Content)</td></tr>
+            <tr><td><button type="submit">Valider</button></td><td></td></tr>
+        </tbody>
+    </table>
+}
+
+

@@ -12,6 +12,8 @@ namespace WikY.Models
 
         public int ArticleId { get; set; }
 
+        public virtual Article Article { get; set; }
+
         [Display(Name = "Votre nom")]
         public string Author { get; set; }
 

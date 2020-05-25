@@ -4,25 +4,25 @@
 
 @{
     ViewBag.Title = "Page d'accueil";
+    Article mostRecent = (Article)ViewBag.MostRecent;
 }
+@*<span class="red">Test</span>*@
 
 @if (Model.Count > 0)
 {
-    <h2 class="text-center jumbotron">Articles</h2>
+    <h2 class="text-center jumbotron">Dernier article</h2>
 }
 else
 {
     <h2 class="text-center">Il n'y a pas d'article pour l'instant.</h2>
 }
 
-@foreach (Article art in Model)
-{
     <hr />
-    <h3 class="text-center">@Html.ActionLink(art.Theme, "ReadArticle", "Home", new { myId = art.Id }, null)</h3>
+    <h3 class="text-center">@Html.ActionLink(mostRecent.Theme, "ReadArticle", "Article", new { myId = mostRecent.Id }, null)</h3>
     <p class="text-center">
         <em>
-            Posté par @art.Author<br />
-            Le @art.CreationDate
+            Posté par @mostRecent.Author<br />
+            Le @mostRecent.CreationDate
         </em>
     </p>
-}
+

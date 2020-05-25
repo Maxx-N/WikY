@@ -1,0 +1,21 @@
+﻿@model WikY.Models.Article
+
+@{
+    ViewBag.Title = "Nouvel article";
+}
+
+<h2>Nouvel article</h2>
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tbody>
+            <tr><td>@Html.LabelFor(a => a.Theme)</td><td>@Html.EditorFor(a => a.Theme)</td></tr>
+            <tr><td>@Html.LabelFor(a => a.Author)</td><td>@Html.EditorFor(a => a.Author)</td></tr>
+            <tr><td>@Html.LabelFor(a => a.Content)</td><td>@Html.EditorFor(a => a.Content)</td></tr>
+            <tr><td><button type="submit">Valider</button></td><td></td></tr>
+        </tbody>
+    </table>
+}
+
+
+
