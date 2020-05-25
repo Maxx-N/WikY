@@ -12,13 +12,11 @@ namespace WikY.Controllers
         [HttpPost]
         public ActionResult CreateComment(Comment myComment)
         {
-            {
-                WikYContext myContext = new WikYContext();
-                myContext.Comments.Add(myComment);
-                myContext.SaveChanges();
-                return RedirectToAction("ReadArticle", "Article", new { myId = myComment.ArticleId });
-            }
-
+            WikYContext myContext = new WikYContext();
+            myContext.Comments.Add(myComment);
+            myContext.SaveChanges();
+            Article myArticle = myContext.Articles.Find(myComment.ArticleId);
+            return PartialView("_ListOfComments", myArticle.Comments);
         }
 
         public ActionResult UpdateComment(int myId)

@@ -189,6 +189,7 @@
     <Content Include="Views\Article\ReadArticle.cshtml" />
     <Content Include="Views\Article\UpdateArticle.cshtml" />
     <Content Include="Views\Comment\UpdateComment.cshtml" />
+    <Content Include="Views\Shared\_ListOfComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

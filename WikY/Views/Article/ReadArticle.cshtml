@@ -29,36 +29,57 @@
 
 <br />
 
-@using (Html.BeginForm("CreateComment", "Comment"))
+
+
+@using (Ajax.BeginForm("CreateComment", "Comment", new AjaxOptions { UpdateTargetId = "list_of_comments" }))
 {
     <input type="hidden" name="ArticleId" value="@Model.Id" />
+
     <table class="table">
         <tbody>
-            <tr><td><label for="Author">Votre nom</label></td><td> <input type="text" name="Author" /></td></tr>
-            <tr><td><label for="Content">Votre commentaire</label></td><td><textarea name="Content"></textarea></td></tr>
+            <tr>
+                <td><label for="Author">Votre nom</label></td>
+                <td>
+                    <input type="text" name="Author" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Content">Votre commentaire</label>
+                </td>
+                <td>
+                    <textarea name="Content"></textarea>
+                </td>
+            </tr>
             <tr><td><button type="submit">Commenter</button></td><td></td></tr>
         </tbody>
     </table>
 }
 
-@if (Model.Comments.Count > 0)
-{
+<div id="list_of_comments">
+    @Html.Partial("_ListOfComments", Model.Comments)
+</div>
+
+
+@*@if(Model.Comments.Count > 0)
+    {
     <h2 class="text-center"><strong>Commentaires</strong></h2>
 
     foreach (Comment c in Model.Comments.OrderByDescending(c => c.CommentDate))
     {
-        <hr />
-        <h3><strong>@c.Author</strong></h3>
-        <p>@c.Content</p>
-        <p><em>posté le @c.CommentDate</em></p>
-        <div style="display:flex; justify-content:space-around" @*class="horizontal-flex"*@>
-            <p>
-                @Html.ActionLink("Modifier", "UpdateComment", "Comment", new { myId = c.Id }, null)
-            </p>
-            <p>
-                @Html.ActionLink("Supprimer", "DestroyComment", "Comment", new { myId = c.Id }, null)
-            </p>
-        </div>
-    }
-}
+    <hr />
 
+    <h3><strong>@c.Author</strong></h3>
+    <p>@c.Content</p>
+    <p><em>posté le @c.CommentDate</em></p>
+    <div style="display:flex; justify-content:space-around">
+    <p>
+        @Html.ActionLink("Modifier", "UpdateComment", "Comment", new { myId = c.Id }, null)
+    </p>
+    <p>
+        @Html.ActionLink("Supprimer", "DestroyComment", "Comment", new { myId = c.Id
+    }, null)
+    </p>
+                </div>
+            }
+        }*@

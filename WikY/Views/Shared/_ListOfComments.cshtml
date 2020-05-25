@@ -1,0 +1,20 @@
+﻿@using WikY.Models
+@model List<Comment>
+
+<h2 class="text-center"><strong>Commentaires</strong></h2>
+
+@foreach (Comment c in Model.OrderByDescending(c => c.CommentDate).ToList())
+{
+    <hr />
+    <h3><strong>@c.Author</strong></h3>
+    <p>@c.Content</p>
+    <p><em>posté le @c.CommentDate</em></p>
+    <div style="display:flex; justify-content:space-around" @*class="horizontal-flex"*@>
+        <p>
+            @Html.ActionLink("Modifier", "UpdateComment", "Comment", new { myId = c.Id }, null)
+        </p>
+        <p>
+            @Html.ActionLink("Supprimer", "DestroyComment", "Comment", new { myId = c.Id }, null)
+        </p>
+    </div>
+}
