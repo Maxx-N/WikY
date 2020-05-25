@@ -9,7 +9,7 @@
     <h3><strong>@c.Author</strong></h3>
     <p>@c.Content</p>
     <p><em>posté le @c.CommentDate</em></p>
-    <div style="display:flex; justify-content:space-around" @*class="horizontal-flex"*@>
+    <div class="horizontal-flex">
         <p>
             @Html.ActionLink("Modifier", "UpdateComment", "Comment", new { myId = c.Id }, null)
         </p>
