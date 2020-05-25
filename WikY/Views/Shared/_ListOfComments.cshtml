@@ -14,7 +14,7 @@
             @Html.ActionLink("Modifier", "UpdateComment", "Comment", new { myId = c.Id }, null)
         </p>
         <p>
-            @Html.ActionLink("Supprimer", "DestroyComment", "Comment", new { myId = c.Id }, null)
+            @Ajax.ActionLink("Supprimer", "DestroyComment", "Comment", new { myId = c.Id }, new AjaxOptions { UpdateTargetId = "list_of_comments" })
         </p>
     </div>
 }

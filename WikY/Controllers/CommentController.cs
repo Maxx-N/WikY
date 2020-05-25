@@ -41,10 +41,10 @@ namespace WikY.Controllers
         {
             WikYContext myContext = new WikYContext();
             Comment commentToDestroy = myContext.Comments.Find(myId);
-            int myArticleId = commentToDestroy.ArticleId;
+            Article myArticle = commentToDestroy.Article;
             myContext.Comments.Remove(commentToDestroy);
             myContext.SaveChanges();
-            return RedirectToAction("ReadArticle", "Article", new { myId = myArticleId });
+            return PartialView("_ListOfComments", myArticle.Comments);
         }
     }
 }
