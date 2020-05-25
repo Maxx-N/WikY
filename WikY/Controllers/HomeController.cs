@@ -14,7 +14,11 @@ namespace WikY.Controllers
             WikYContext myContext = new WikYContext();
 
             List<Article> myList = myContext.Articles.OrderByDescending(a => a.CreationDate).ToList();
-            ViewBag.MostRecent = myList[0];
+
+            if (myList.Count > 0)
+            {
+                ViewBag.MostRecent = myList[0];
+            }
 
             return View(myContext.Articles.ToList());
         }

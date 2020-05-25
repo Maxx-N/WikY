@@ -1,0 +1,36 @@
+﻿@using WikY.Models
+
+@model Comment
+
+@using (Ajax.BeginForm("CreateComment", "Comment", new AjaxOptions { UpdateTargetId = "list_of_comments" }))
+{
+    @Html.HiddenFor(c => c.ArticleId)
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    @Html.LabelFor(c => c.Author)
+                </td>
+                <td>
+                    @Html.EditorFor(c => c.Author)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(c => c.Content)
+                </td>
+                <td>
+                    @Html.EditorFor(c => c.Content)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Commenter</button>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
