@@ -21,8 +21,9 @@
     justify-content: space-around;
 }
 
-.red {
-    color: red;
+.form-errors{
+    background-color: darkred;
+    color: white;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

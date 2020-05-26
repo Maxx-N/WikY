@@ -1,7 +1,10 @@
 ﻿@using WikY.Models
 @model List<Comment>
 
-<h2 class="text-center"><strong>Commentaires</strong></h2>
+@if (Model.Count > 0)
+{
+    <h2 class="text-center"><strong>Commentaires</strong></h2>
+}
 
 @foreach (Comment c in Model.OrderByDescending(c => c.CommentDate).ToList())
 {

@@ -1,0 +1,22 @@
+﻿@using WikY.Models
+
+@model List<Article>
+
+@{
+    ViewBag.Title = "FindArticle";
+}
+
+<h1 class="text-center jumbotron"><strong>Résultat de la recherche pour "@TempData["Choice"]"</strong></h1>
+
+@foreach (Article art in Model.OrderByDescending(a => a.CreationDate))
+{
+    <hr />
+    <h3 class="text-center">@Html.ActionLink(art.Theme, "ReadArticle", "Article", new { myId = art.Id }, null)</h3>
+    <p class="text-center">
+        <em>
+            Posté par @art.Author<br />
+            Le @art.CreationDate
+        </em>
+    </p>
+}
+

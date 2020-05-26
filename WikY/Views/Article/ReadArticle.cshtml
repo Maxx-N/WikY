@@ -29,31 +29,6 @@
 
 <br />
 
-@*@using (Ajax.BeginForm("CreateComment", "Comment", new AjaxOptions { UpdateTargetId = "list_of_comments" }))
-    {
-        <input type="hidden" name="ArticleId" value="@Model.Id" />
-
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td><label for="Author">Votre nom</label></td>
-                    <td>
-                        <input type="text" name="Author" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="Content">Votre commentaire</label>
-                    </td>
-                    <td>
-                        <textarea name="Content"></textarea>
-                    </td>
-                </tr>
-                <tr><td><button type="submit">Commenter</button></td><td></td></tr>
-            </tbody>
-        </table>
-    }*@
-
 @Html.Partial("_CreateComment", new Comment { ArticleId = Model.Id })
 
 <div id="list_of_comments">

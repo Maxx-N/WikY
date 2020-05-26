@@ -142,6 +142,14 @@
     <Compile Include="Migrations\202005220941011_MODIFY_NAME_OF_CREATIONDATE_PROPERTY_IN_ARTICLES.Designer.cs">
       <DependentUpon>202005220941011_MODIFY_NAME_OF_CREATIONDATE_PROPERTY_IN_ARTICLES.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005260850453_MakeContentOfArticleMandatory.cs" />
+    <Compile Include="Migrations\202005260850453_MakeContentOfArticleMandatory.Designer.cs">
+      <DependentUpon>202005260850453_MakeContentOfArticleMandatory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005260947197_ArticleWithMandatoryThemeAnd20CharactersMaximum.cs" />
+    <Compile Include="Migrations\202005260947197_ArticleWithMandatoryThemeAnd20CharactersMaximum.Designer.cs">
+      <DependentUpon>202005260947197_ArticleWithMandatoryThemeAnd20CharactersMaximum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="WikYContext.cs" />
     <Compile Include="Models\Article.cs" />
@@ -191,6 +199,8 @@
     <Content Include="Views\Comment\UpdateComment.cshtml" />
     <Content Include="Views\Shared\_ListOfComments.cshtml" />
     <Content Include="Views\Shared\_CreateComment.cshtml" />
+    <Content Include="Views\Article\SearchArticle.cshtml" />
+    <Content Include="Views\Article\FindArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -214,6 +224,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005220941011_MODIFY_NAME_OF_CREATIONDATE_PROPERTY_IN_ARTICLES.resx">
       <DependentUpon>202005220941011_MODIFY_NAME_OF_CREATIONDATE_PROPERTY_IN_ARTICLES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005260850453_MakeContentOfArticleMandatory.resx">
+      <DependentUpon>202005260850453_MakeContentOfArticleMandatory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005260947197_ArticleWithMandatoryThemeAnd20CharactersMaximum.resx">
+      <DependentUpon>202005260947197_ArticleWithMandatoryThemeAnd20CharactersMaximum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

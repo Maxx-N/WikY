@@ -24,11 +24,24 @@ namespace WikY.Controllers
         [HttpPost]
         public ActionResult CreateArticle(Article myArticle)
         {
-            WikYContext myContext = new WikYContext();
-            myContext.Articles.Add(myArticle);
-            myContext.SaveChanges();
+            if (!ModelState.IsValid)
+            {
+                return View("CreateArticle");
+            }
+            else
+            {
+                WikYContext myContext = new WikYContext();
+                myContext.Articles.Add(myArticle);
+                myContext.SaveChanges();
+                return RedirectToAction("ReadArticle", new { myId = myArticle.Id }); ;
+            }
+        }
 
-            return RedirectToAction("ReadArticle", new { myId = myArticle.Id }); ;
+        public ActionResult UniqueTheme(string theme)
+        {
+            WikYContext myContext = new WikYContext();
+            bool result = !myContext.Articles.Any(a => a.Theme == theme);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ReadArticle(int myId)
@@ -55,6 +68,32 @@ namespace WikY.Controllers
             articleToUpdate.Content = myArticle.Content;
             myContext.SaveChanges();
             return RedirectToAction("ReadArticle", new { myId = myArticle.Id });
+        }
+
+        public ActionResult SearchArticle()
+        {
+            WikYContext myContext = new WikYContext();
+            return View(myContext.Articles.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult SearchArticle(string choice)
+        {
+            WikYContext myContext = new WikYContext();
+            TempData["Choice"] = choice;
+            choice = choice.ToLower();
+            List<Article> myList = myContext.Articles.Where(a =>
+            a.Content.ToLower().Contains(choice)
+            || a.Author.ToLower().Contains(choice)
+            || a.Content.ToLower().Contains(choice)
+            ).ToList();
+
+            return RedirectToAction("FindArticles", myList);
+        }
+
+        public ActionResult FindArticle()
+        {
+            return View();
         }
 
         public ActionResult DestroyArticle(int myId)

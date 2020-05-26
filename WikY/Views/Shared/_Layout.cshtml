@@ -8,8 +8,9 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false) 
+    @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/jqueryUnobtrusive")
+    @Scripts.Render("~/bundles/jqueryval")
 
 </head>
 <body>
@@ -28,6 +29,7 @@
                     <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                     <li>@Html.ActionLink("Les articles", "IndexArticle", "Article")</li>
                     <li>@Html.ActionLink("Nouvel article", "CreateArticle", "Article")</li>
+                    <li>@Html.ActionLink("Rechercher article", "SearchArticle", "Article")</li>
 
                 </ul>
             </div>

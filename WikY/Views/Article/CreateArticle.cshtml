@@ -7,6 +7,9 @@
 <h2>Nouvel article</h2>
 @using (Html.BeginForm())
 {
+    <div class="form-errors">
+        @Html.ValidationSummary()
+    </div>
     <table class="table">
         <tbody>
             <tr><td>@Html.LabelFor(a => a.Theme)</td><td>@Html.EditorFor(a => a.Theme)</td></tr>
