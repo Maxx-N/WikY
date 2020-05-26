@@ -1,5 +1,4 @@
-﻿
-@using WikY.Models
+﻿@using WikY.Models
 
 @model List<Article>
 
@@ -9,10 +8,12 @@
 
 <h1 class="text-center jumbotron"><strong>Rechercher un article</strong></h1>
 
-@Html.BeginForm() {
+@using (Html.BeginForm())
+{
 <label for="search_article">Contenu, thème ou auteur</label>
 <input type="search" id="search_article" name="choice"
        aria-label="Rechercher sur le site">
 <button type="submit">Trouver le(s) article(s)</button>
 }
+
 

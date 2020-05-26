@@ -88,13 +88,13 @@ namespace WikY.Controllers
             || a.Content.ToLower().Contains(choice)
             ).ToList();
 
-            return RedirectToAction("FindArticles", myList);
+            return View("FindArticle", myList);
         }
 
-        public ActionResult FindArticle()
-        {
-            return View();
-        }
+        //public ActionResult FindArticle()
+        //{
+        //    return View();
+        //}
 
         public ActionResult DestroyArticle(int myId)
         {
