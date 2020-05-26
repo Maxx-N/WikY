@@ -8,12 +8,15 @@
 
 <h1 class="text-center jumbotron"><strong>Rechercher un article</strong></h1>
 
-@using (Html.BeginForm())
+@using (Ajax.BeginForm("SearchArticle", "Article", new AjaxOptions { UpdateTargetId = "search_result" }))
 {
-<label for="search_article">Contenu, thème ou auteur</label>
-<input type="search" id="search_article" name="choice"
-       aria-label="Rechercher sur le site">
-<button type="submit">Trouver le(s) article(s)</button>
+    <label for="search_article">Contenu, thème ou auteur</label>
+    <input type="search" id="search_article" name="choice"
+           aria-label="Rechercher sur le site">
+    <button type="submit">Trouver le(s) article(s)</button>
 }
 
+<div id="search_result">
+    @Html.Partial("_FindArticle")
+</div>
 

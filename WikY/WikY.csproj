@@ -201,6 +201,7 @@
     <Content Include="Views\Shared\_CreateComment.cshtml" />
     <Content Include="Views\Article\SearchArticle.cshtml" />
     <Content Include="Views\Article\FindArticle.cshtml" />
+    <Content Include="Views\Shared\_FindArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

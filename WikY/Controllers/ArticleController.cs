@@ -80,21 +80,16 @@ namespace WikY.Controllers
         public ActionResult SearchArticle(string choice)
         {
             WikYContext myContext = new WikYContext();
-            TempData["Choice"] = choice;
-            choice = choice.ToLower();
+            ViewBag.Choice = choice;
+            choice = choice.ToUpper();
             List<Article> myList = myContext.Articles.Where(a =>
-            a.Content.ToLower().Contains(choice)
-            || a.Author.ToLower().Contains(choice)
-            || a.Content.ToLower().Contains(choice)
+            a.Content.ToUpper().Contains(choice)
+            || a.Author.ToUpper().Contains(choice)
+            || a.Content.ToUpper().Contains(choice)
             ).ToList();
 
-            return View("FindArticle", myList);
+            return PartialView("_FindArticle", myList);
         }
-
-        //public ActionResult FindArticle()
-        //{
-        //    return View();
-        //}
 
         public ActionResult DestroyArticle(int myId)
         {
