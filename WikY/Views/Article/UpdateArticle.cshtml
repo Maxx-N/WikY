@@ -6,14 +6,18 @@
     ViewBag.Title = "Modifier un article";
 }
 
-<h2>Modification d'article</h2>
+<h2>Modification de l'article "@Model.Theme"</h2>
 @using (Html.BeginForm())
 {
+    <div class="form-errors">
+        @Html.ValidationSummary()
+    </div>
+
     @Html.HiddenFor(a => a.Id)
+    @*@Html.HiddenFor(a => a.Theme, new { Value = "x" })*@
 
     <table class="table">
         <tbody>
-            <tr><td>@Html.LabelFor(a => a.Theme)</td><td>@Html.EditorFor(a => a.Theme)</td></tr>
             <tr><td>@Html.LabelFor(a => a.Author)</td><td>@Html.EditorFor(a => a.Author)</td></tr>
             <tr><td>@Html.LabelFor(a => a.Content)</td><td>@Html.EditorFor(a => a.Content)</td></tr>
             <tr><td><button type="submit">Valider</button></td><td></td></tr>

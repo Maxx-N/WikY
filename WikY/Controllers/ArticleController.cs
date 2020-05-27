@@ -54,20 +54,28 @@ namespace WikY.Controllers
         public ActionResult UpdateArticle(int myId)
         {
             WikYContext myContext = new WikYContext();
-            Article myArticle = myContext.Articles.FirstOrDefault(a => a.Id == myId);
+            Article myArticle = myContext.Articles.Find(myId);
             return View(myArticle);
         }
 
         [HttpPost]
         public ActionResult UpdateArticle(Article myArticle)
         {
-            WikYContext myContext = new WikYContext();
-            Article articleToUpdate = myContext.Articles.Find(myArticle.Id);
-            articleToUpdate.Theme = myArticle.Theme;
-            articleToUpdate.Author = myArticle.Author;
-            articleToUpdate.Content = myArticle.Content;
-            myContext.SaveChanges();
-            return RedirectToAction("ReadArticle", new { myId = myArticle.Id });
+            ModelState.Remove("Theme");
+            if (!ModelState.IsValid)
+            {
+                return View("UpdateArticle", myArticle.Id);
+            }
+            else
+            {
+                WikYContext myContext = new WikYContext();
+                Article articleToUpdate = myContext.Articles.Find(myArticle.Id);
+                //articleToUpdate.Theme = myArticle.Theme;
+                articleToUpdate.Author = myArticle.Author;
+                articleToUpdate.Content = myArticle.Content;
+                myContext.SaveChanges();
+                return RedirectToAction("ReadArticle", new { myId = myArticle.Id });
+            }
         }
 
         public ActionResult SearchArticle()
